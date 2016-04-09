@@ -23,21 +23,39 @@ Accepts a range and is usable in Visual mode.
 
 Ex.
 
-    plugin.commandSync('Cmd', {
-        range: '',
-        nargs: '*',
-    }, function( nvim, args, range, cb ) {
-        try {
-            incrementCalls()
-            nvim.setCurrentLine(
-                fmt('Command: Called', numCalls, 'times, args:', args, 'range:', range),
-                cb )
-        } catch ( err ) {
-            cb( err )
-        }
-    })
+```js
+plugin.commandSync('Cmd', {
+    range: '',
+    nargs: '*',
+}, function( nvim, args, range, cb ) {
+    try {
+        incrementCalls()
+        nvim.setCurrentLine(
+            fmt('Command: Called', numCalls, 'times, args:', args, 'range:', range),
+            cb )
+    } catch ( err ) {
+        cb( err )
+    }
+})
+```
 
 Running `:Format` while run jscs in fix mode on the whole file and replace the current buffer with the result.
+
+```js
+plugin.commandSync('Cmd', {
+  range: '',
+  nargs: '*',
+}, function (nvim, args, range, cb) {
+  try {
+    incrementCalls();
+    nvim.setCurrentLine(
+        fmt('Command: Called', numCalls, 'times, args:', args, 'range:', range),
+        cb);
+  } catch (err) {
+    cb(err);
+  }
+});
+```
 
 ### Configuration
 
